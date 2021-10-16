@@ -7,6 +7,7 @@
     "dist",
     "src"
   ],
+  "repository": "https://github.com/excalidraw/random-username",
   "publishConfig": {
     "access": "public"
   },
