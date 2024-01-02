@@ -51,7 +51,6 @@ export const animals = [
   'giraffe',
   'goldfinch',
   'goldfish',
-  'gorilla',
   'grasshopper',
   'gull',
   'hamster',
