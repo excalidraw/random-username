@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['10.x', '12.x', '14.x']
+        node: ['12.x', '14.x']
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
@@ -19,14 +19,22 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
 
       - name: Lint
-        run: yarn lint
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: lint # will run `yarn lint` command
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: test --ci --coverage --maxWorkers=2 # will run `yarn test --ci --coverage --maxWorkers=2` command
 
       - name: Build
-        run: yarn build
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build # will run `yarn build` command
